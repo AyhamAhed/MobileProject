@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:padding="30dp"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME"
+        android:textColor="#6750A4"
+        android:textStyle="bold|italic"
+        android:textSize="30dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/usernameEdt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:hint="  User Name"
+        android:textColorHint="#6750A4"
+        android:background="@drawable/edittext_border"/>
+
+    <EditText
+        android:id="@+id/passwordEdt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_border"
+        android:hint="  Password"
+        android:textColorHint="#6750A4"/>
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="forgot password?"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember me"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/white"/>
+
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/CustomButton"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center"
+        android:text="LOG IN" />
+
+    <Button
+        android:id="@+id/signupBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/CustomButton"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="SIGN UP" />
+
+
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

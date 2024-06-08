@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".CarDetailsActivity">
+
+    <ImageView
+        android:id="@+id/carImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/car" />
+
+    <TextView
+        android:id="@+id/carMakeModelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Make and Model"
+        android:textColor="#6750A4"
+        android:textSize="22dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/carYearTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Year"
+        android:textColor="#6750A4"
+        android:textSize="22dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/carPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Price"
+        android:textColor="#6750A4"
+        android:textSize="22dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/carFeaturesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Features"
+        android:textColor="#6750A4"
+        android:textSize="22dp"
+        android:textStyle="bold|italic" />
+
+
+    <Button
+        android:id="@+id/confirmRentalButton"
+        style="@style/CustomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Confirm Rental" />
+
+</LinearLayout>

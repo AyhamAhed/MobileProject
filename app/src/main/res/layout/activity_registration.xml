@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="REGISTRATION"
+        android:textColor="#6750A4"
+        android:textSize="30dp"
+        android:textStyle="bold|italic" />
+
+
+    <EditText
+        android:id="@+id/nameEdt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edittext_border"
+        android:hint="  Name"
+        android:inputType="textPersonName"
+        android:layout_gravity="center"
+        android:textColorHint="#6750A4" />
+
+    <EditText
+        android:id="@+id/passEdt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edittext_border"
+        android:hint="  Password"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:textColorHint="#6750A4" />
+
+    <EditText
+        android:id="@+id/emailEdt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edittext_border"
+        android:hint="  Email"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:textColorHint="#6750A4" />
+
+    <EditText
+        android:id="@+id/phoneEdt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edittext_border"
+        android:hint="  Phone Number"
+        android:inputType="phone"
+        android:layout_gravity="center"
+        android:textColorHint="#6750A4" />
+
+    <Spinner
+        android:id="@+id/genderSpinner"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_border"
+        android:textColorHint="#6750A4" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        style="@style/CustomButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:text="Register" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
