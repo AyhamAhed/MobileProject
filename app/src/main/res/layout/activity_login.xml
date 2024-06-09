@@ -20,12 +20,12 @@
         android:layout_gravity="center"/>
 
     <EditText
-        android:id="@+id/usernameEdt"
+        android:id="@+id/emailEdt"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="35dp"
-        android:hint="  User Name"
+        android:hint="  Email"
         android:textColorHint="#6750A4"
         android:background="@drawable/edittext_border"/>
 
@@ -39,17 +39,9 @@
         android:hint="  Password"
         android:textColorHint="#6750A4"/>
 
-    <TextView
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="forgot password?"
-        android:textSize="15dp"
-        android:layout_gravity="center"
-        android:textColor="@android:color/white" />
 
     <CheckBox
+        android:id="@+id/chkRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remember me"
