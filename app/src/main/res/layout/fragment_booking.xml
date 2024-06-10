@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingFragment">
+    android:orientation="vertical"
+    android:background="@drawable/background_image"
+    tools:context=".BasicFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="YOUR BOOKINGS"
+        android:textStyle="bold|italic"
+        android:textSize="40dp"
+        android:textColor="#6750A4"
+        android:layout_marginTop="50dp"/>
 
-</FrameLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/carsBookedRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="0dp" />
+
+</LinearLayout>

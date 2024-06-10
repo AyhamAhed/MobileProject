@@ -1,31 +1,36 @@
 package com.example.project;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class BasicFragment extends Fragment {
 
-    private EditText searchQueryEditText;
-    private RecyclerView carsRecyclerView;
+    private RecyclerView recyclerViewCars;
     private CarAdapter carAdapter;
-    private List<Car> carList;
-    private List<Car> filteredCarList;
-
-    private Button viewDetailsButton;
+    private List<Car> carList = new ArrayList<>();
+    private EditText searchEditText;
 
     public BasicFragment() {
         // Required empty public constructor
@@ -34,64 +39,68 @@ public class BasicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_basic, container, false);
 
-        searchQueryEditText = view.findViewById(R.id.searchEditText);
-        carsRecyclerView = view.findViewById(R.id.carsRecyclerView);
-        carList = getCarList(); // Replace with actual data source
-        filteredCarList = new ArrayList<>(carList);
-
-        carAdapter = new CarAdapter(getContext(), filteredCarList, new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-        carsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        carsRecyclerView.setAdapter(carAdapter);
-
-        // Apply item decoration for spacing
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.item_spacing);
-        carsRecyclerView.addItemDecoration(new SpacingItemDecoration(spacingInPixels));
-
-        searchQueryEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                filterCars(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-
+        recyclerViewCars = view.findViewById(R.id.carsRecyclerView);
+        searchEditText = view.findViewById(R.id.searchEditText);
+        recyclerViewCars.setLayoutManager(new LinearLayoutManager(getContext()));
+        carAdapter = new CarAdapter(getContext(), carList);
+        recyclerViewCars.setAdapter(carAdapter);
+        fetchCarData();
         return view;
     }
 
-    private void filterCars(String query) {
-        filteredCarList.clear();
-        if (query.isEmpty()) {
-            filteredCarList.addAll(carList);
-        } else {
-            for (Car car : carList) {
-                if (car.getName().toLowerCase().contains(query.toLowerCase())) {
-                    filteredCarList.add(car);
+    private void fetchCarData() {
+        String url = "http://10.0.2.2/Project/fetch_cars.php"; // Replace with your server address
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // Print the response to log
+                Log.d("ServerResponse", response);
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    String status = jsonResponse.getString("status");
+
+                    if (status.equals("success")) {
+                        JSONArray carsArray = jsonResponse.getJSONArray("data");
+                        carList.clear();
+                        for (int i = 0; i < carsArray.length(); i++) {
+                            JSONObject carObject = carsArray.getJSONObject(i);
+                            Car car = new Car(
+                                    carObject.getInt("ID"),
+                                    carObject.getString("company"),
+                                    carObject.getString("Model_year"), // Updated key name
+                                    carObject.getInt("Mileage"),
+                                    carObject.getInt("Seats_number"), // Updated key name
+                                    carObject.getInt("MonthlyPrice"),
+                                    carObject.getInt("DailyPrice"),
+                                    carObject.getInt("price"),
+                                    carObject.getString("color"),
+                                    carObject.getString("status"),
+                                    carObject.getString("image")
+                            );
+                            carList.add(car);
+                        }
+                        carAdapter.notifyDataSetChanged();
+                    } else {
+                        String message = jsonResponse.getString("message");
+                        Toast.makeText(getContext(), "Failed to fetch cars: " + message, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-        }
-        carAdapter.notifyDataSetChanged();
-    }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-    private List<Car> getCarList() {
-        // Replace with actual data retrieval logic
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("Car 1", "Details about Car 1", R.drawable.car));
-        cars.add(new Car("Car 2", "Details about Car 2", R.drawable.car));
-        // Add more cars
-        return cars;
+        requestQueue.add(stringRequest);
     }
 }

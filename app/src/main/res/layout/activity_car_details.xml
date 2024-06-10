@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Make and Model"
-        android:textColor="#6750A4"
+        android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold|italic" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Year"
-        android:textColor="#6750A4"
+        android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold|italic" />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Price"
-        android:textColor="#6750A4"
+        android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold|italic" />
 
@@ -52,10 +52,54 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Features"
-        android:textColor="#6750A4"
+        android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold|italic" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <EditText
+            android:id="@+id/dateEditText"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Select Date of renting"
+            android:focusable="false"
+            android:clickable="false"
+            android:background="@drawable/edittext_border"
+            android:inputType="none" />
+
+        <ImageButton
+            android:id="@+id/datePickerButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_picker"
+            android:contentDescription="Select Date" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/daysEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter number of days"
+        android:inputType="number"
+        android:background="@drawable/edittext_border"
+
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/totalPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Total Price"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:textStyle="bold|italic" />
 
     <Button
         android:id="@+id/confirmRentalButton"
