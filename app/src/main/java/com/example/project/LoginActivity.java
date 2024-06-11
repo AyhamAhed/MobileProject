@@ -105,24 +105,31 @@ public class LoginActivity extends AppCompatActivity {
                     String status = jsonResponse.getString("status");
 
                     if (status.equals("success")) {
-                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                        String userType = jsonResponse.getString("Account_type");
+                        if (userType.equals("user")) {
+                            Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
 
-                        // Save login state if "Remember Me" is checked
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("email", email);  // Save the email of the logged-in user
-                        editor.apply();
-                        if (rememberMeCheckBox.isChecked()) {
-                            editor.putString(PREF_EMAIL, email);
-                            editor.putString(PREF_PASSWORD, password);
-                            editor.putBoolean(PREF_REMEMBER, true);
+                            // Save login state if "Remember Me" is checked
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("email", email);  // Save the email of the logged-in user
+                            editor.apply();
+                            if (rememberMeCheckBox.isChecked()) {
+                                editor.putString(PREF_EMAIL, email);
+                                editor.putString(PREF_PASSWORD, password);
+                                editor.putBoolean(PREF_REMEMBER, true);
+                            } else {
+                                editor.clear();
+                            }
+                            editor.apply();
+
+                            // Proceed to the next activity or home screen
+                            Intent intent = new Intent(LoginActivity.this, ViewActivity.class);
+                            startActivity(intent);
                         } else {
-                            editor.clear();
+                            Intent intent = new Intent(LoginActivity.this, admin_home.class);
+                            startActivity(intent);
+                            Toast.makeText(LoginActivity.this, "Only Admin are allowed to log in", Toast.LENGTH_SHORT).show();
                         }
-                        editor.apply();
-
-                        // Proceed to the next activity or home screen
-                        Intent intent = new Intent(LoginActivity.this, ViewActivity.class);
-                        startActivity(intent);
                     } else {
                         String message = jsonResponse.getString("message");
                         Toast.makeText(LoginActivity.this, "Login failed: " + message, Toast.LENGTH_SHORT).show();

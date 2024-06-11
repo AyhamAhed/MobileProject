@@ -24,8 +24,18 @@
             android:name=".ViewActivity"
             android:exported="false" />
         <activity
+            android:name=".AddCar"
+            android:exported="false" />
+        <activity
+            android:name=".dashboard"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
+        <activity
+            android:name=".admin_home"
+            android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

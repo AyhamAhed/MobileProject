@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_margin="20dp"
+    android:background="@drawable/background_image"
+    card_view:cardElevation="2dp"
+    card_view:cardCornerRadius="4dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_image"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imageViewCar"
+            android:layout_width="match_parent"
+            android:layout_height="147dp"
+            android:layout_weight="1.0"
+            android:scaleType="centerCrop"
+            android:src="@drawable/car" />
+
+        <TextView
+            android:id="@+id/carNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="      Car Name"
+            android:textColor="#6750A4"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
